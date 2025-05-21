@@ -1,0 +1,273 @@
+
+
+/* 
+  Responsive Styles for Tablets and Smaller Devices (≤768px)
+  - Makes the container take full width with smaller padding for narrow screens
+  - Reduces header font size for better mobile readability
+*/
+
+@media only screen and (max-width: 768px) {
+    .container {
+        width: 100%;
+        padding: 10px;
+    }
+    .header {
+        font-size: 24px;
+    }
+}
+
+
+
+    /*Giving the body section of each page a nice background colour. this applies to all the pages
+    */
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #fff;
+      color: #000;
+      line-height: 1.6;
+    }
+    
+
+    /*Justify-content used to leave a space between the container items that are produced by the display; flex
+    Display flex produces gaps between the boxes in css*/
+
+    header {
+      background-color: white;
+      padding: 20px 40px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 2px solid #f0f0f0;
+    }
+    
+/* 
+  Animate underline on navigation link hover
+*/
+nav a:hover::after {
+  width: 100%;
+}
+
+    nav a:hover::after {
+      width: 100%;
+    }
+    
+/*gives the h1 in job page boldness in small caps while increasing its size to 32px and giving it a modern font */
+    .job-page h1 {
+        font: small-caps bold 32px 'Segoe UI', sans-serif;
+      }
+      
+
+     
+      
+      
+      
+
+/* */
+
+
+
+
+/* */
+      .job-page {
+        font-family: 'Segoe UI', sans-serif;
+        background-color: #f9fbfc;
+        color: #333;
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 20px;
+      }
+      
+
+
+      /* */
+      .job-page h1 {
+        font: small-caps bold 36px 'Segoe UI', sans-serif;
+        text-align: center;
+        color:  #113a55;
+        margin-bottom: 40px;
+        border-bottom: 3px solid #3498db;
+        padding-bottom: 10px;
+      }
+      
+      /* changes font of h2 while giving it
+      Margin makes 40 pixels from the top*/
+      .job-page h2 {
+        font-size: 28px;
+        color: #113a55;
+        border-left: 6px solid #2980b9;
+        padding-left: 10px;
+        margin-top: 40px;
+      }
+      
+      /* Creates a border around the job sections
+      and makes sure there is sufficient space between the page*/
+      .job-page section {
+        background-color: #ffffff;
+        border: 1px solid #dfe6e9;
+        border-radius: 10px;
+        padding: 20px;
+        margin-bottom: 30px;
+      }
+      
+      /* */
+      .job-page ul, .job-page ol {
+        margin-left: 20px;
+        margin-top: 10px;
+      }
+      
+
+      /* */
+      .job-page ul li::marker {
+        color: #3498db;
+      }
+
+
+      /*Gives the list in the list in the aside a green colour */
+      .job-page ol li::marker {
+        color: #2ecc71;
+      }
+      
+      /*Using CSS styling we made the aside look nice, 90% width spans it across most of the bottom of the page.
+      Float right sets the aside to the right side of the page.
+      The 2 pixel border creates a nice grey border for the aside to distinguish it.
+       by using border radius we can create the round edges of the box
+       using margins we can make sure the aside is not too far or too close to the bottom of the page*/
+      .job-page aside {
+        width: 90%;
+        float: right;
+        border: 2px solid #7f8c8d;
+        border-radius: 10px;
+        padding: 15px;
+        margin-left: 30px;
+        margin-bottom: 30px;
+        background-color: #ecf0f1;
+        color: #2c3e50;
+      }
+      
+      /* We give the footer a nice blue background colour and using width: 100% we make sure it spans the enitre length of the bottom page
+      We align the text to the centre and make sure the text is slightly smaller by decreasing its font size
+       */
+      .job-page footer {
+        clear: both;
+        width: 100%;
+        background-color: #5191d1;
+        color: #ecf0f1;
+        text-align: center;
+        font-size: 0.75em;
+        border-top: 4px solid #041017;
+      }
+
+
+    
+
+      /* this is applied to all the pages too */
+      nav ul {
+        list-style: none;
+        display: flex;
+        justify-content: center;
+        margin: 0;
+        padding: 0;
+      }
+      
+
+      /*creates 20 pixels space between each category in the navigation menu */
+      nav li {
+        margin: 0 20px;
+      }
+      
+
+      
+      /* By using text decoration we get rid of the underline of the link.
+      Tect is neautral white colour and set to BOLD so it is easily readable*/
+      
+      /*Main part of this is the transition code as it is used to give the navigation a much smoother feel.
+      It allows us to change the colour slightly after the menu is hovered over giving it a nice animation
+      */
+      nav a {
+        text-decoration: none;
+        color: #ecf0f1;
+        font-weight: bold;
+        font-size: 16px;
+        transition: color 0.3s, border-bottom 0.3s;
+      }
+
+
+      /* Using nav a hover we can make the text in the nav section change colours to dark blue when hovered over*/
+      
+      nav a:hover {
+        color: #fffb05;
+        border-bottom: 2px solid #06578d;
+      }
+
+
+
+      /*we wanted to have the menu bar fixed to the top but didnt know how so we asked chatgpt
+      "in html how do we keep a menu bar fixed to the top of the page even as we scroll down and up the page"*/
+      nav {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+    
+        background-color:  #3498db;
+        padding: 15px 0;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      }
+
+      /* giving the email in the footer an ID so we could change the colour to white*/
+      #email{
+        text-decoration: none;
+        color:white;
+      }
+
+      /*Johnny is the ID  for email link in about.html in the footer  Nash : im not sure what this is yet */
+      #johnny{
+        text-decoration: none;
+        color:white;
+      }
+
+        /*  */
+      .about-page {
+        font-family: 'Segoe UI', sans-serif;
+
+      }
+
+
+/* Css Styling for Apply page */
+      .apply-button {
+        display: inline-block;
+        background-color: #3498db;
+        color: white;
+        padding: 12px 20px;
+        text-decoration: none;
+        border-radius: 8px;
+        font-weight: bold;
+        transition: background-color 0.3s ease;
+        margin-top: 15px;
+      }
+      
+
+
+
+      .apply-button:hover {
+        background-color: #2980b9;
+      }
+
+
+
+      /*using width 100% we make sure the footer spans across the entire length of the page.
+       */
+      footer {
+        width: 100%;
+        background-color: #3498db;
+        color: #ecf0f1;
+        text-align: center;
+        font-size: 0.75em;
+        padding: 15px 0;
+        border-top: 4px solid #2c3e50;
+        position: relative; 
+        bottom: 0;
+      }
+
+    
+      
