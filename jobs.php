@@ -4,14 +4,7 @@
     <link rel="stylesheet" href="css/styles.css">
     
     <meta charset="UTF-8">
-    <nav>
-        <ul>
-          <li><a href="index.html">Home</a></li>
-          <li><a href="jobs.html">Job Descriptions</a></li>
-          <li><a href="apply.html">Apply</a></li>
-          <li><a href="about.html">About Us</a></li>
-        </ul>
-      </nav>
+    <?php include("nav.inc"); ?>
   
       
     <title>Open Positions at <bold><em>Gettin It Done</em></bold></title>

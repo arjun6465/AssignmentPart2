@@ -13,14 +13,7 @@
     <img src="images/logo.png" alt="Description of the image" width="500" height="299" class="Imagelogo">
 
     <!-- Navigation Menu -->
-    <nav>
-        <ul>
-            <li><a href="index.html">Home</a></li>
-            <li><a href="jobs.html">Job Descriptions</a></li>
-            <li><a href="apply.html">Apply</a></li>
-            <li><a href="about.html">About Us</a></li>
-        </ul>
-    </nav>
+    <?php include("nav.inc"); ?>
 </head>
 
 <body>
