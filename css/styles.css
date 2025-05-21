@@ -293,3 +293,11 @@ thead {
 .error {
   color: red;
 }
+
+.dynamic-job {
+    margin-top: 2em;
+    padding: 1em;
+    border: 1px solid #aaa;
+    background-color: #f8f8f8;
+    border-radius: 8px;
+}
