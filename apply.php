@@ -33,8 +33,6 @@
 
         <!-- Job Application Form Section -->
         <div class="form-section">
-            <!-- Form submission setup, changed from the mercury server to the process_eoi.php -->
-            <form method="post" action="process_eoi.php" novalidate="novalidate">
 
 
                 <!-- Personal Details Section -->

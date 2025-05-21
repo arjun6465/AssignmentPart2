@@ -1,13 +1,15 @@
+
+
+
 <?php
-// Redirect if not a POST request
-if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
+
     header("Location: apply.php");
     exit();
 }
 
 require_once("settings.php");
 
-// Function to sanitize input
+
 function sanitize($data) {
     return htmlspecialchars(stripslashes(trim($data)));
 }
