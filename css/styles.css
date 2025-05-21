@@ -269,5 +269,27 @@ nav a:hover::after {
         bottom: 0;
       }
 
-    
-      
+        /*manage.php styling
+      */
+      table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 1em;
+}
+
+table, th, td {
+  border: 1px solid #aaa;
+}
+
+th, td {
+  padding: 10px;
+  text-align: left;
+}
+
+thead {
+  background-color: #f2f2f2;
+}
+
+.error {
+  color: red;
+}
