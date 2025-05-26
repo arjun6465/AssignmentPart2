@@ -1,6 +1,7 @@
 <?php
+// Load database connection details
 require_once('settings.php');
-$conn = @mysqli_connect($host, $user, $pwd, $sql_db);
+$conn = @mysqli_connect($host, $user, $pwd, $sql_db); // Connect to the MySQL database
 ?>
 
 <!DOCTYPE html>
@@ -8,15 +9,16 @@ $conn = @mysqli_connect($host, $user, $pwd, $sql_db);
 <head>
     <meta charset="UTF-8">
     <title>Manage EOIs</title>
-    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/styles.css"> 
 </head>
 <body>
-    <?php include("header.inc"); ?>
-    <?php include("nav.inc"); ?>
+    <?php include("header.inc"); ?> 
+    <?php include("nav.inc"); ?>    
 
     <main>
         <h2>Manage Expressions of Interest</h2>
 
+        <!-- Form to search EOIs by job ref or applicant name -->
         <form method="get" action="manage.php">
             <fieldset>
                 <legend>Search EOIs</legend>
@@ -30,13 +32,15 @@ $conn = @mysqli_connect($host, $user, $pwd, $sql_db);
         <hr>
 
         <?php
+        // Show error if connection failed
         if (!$conn) {
             echo "<p class='error'>Database connection failed: " . mysqli_connect_error() . "</p>";
         } else {
-            // Build query
+            // Start building the SQL query
             $searchQuery = "SELECT * FROM eoi";
             $conditions = [];
 
+            // If filters are provided, add conditions to the query
             if (!empty($_GET['jobRef'])) {
                 $jobRef = mysqli_real_escape_string($conn, $_GET['jobRef']);
                 $conditions[] = "JobReferenceNumber = '$jobRef'";
@@ -52,13 +56,15 @@ $conn = @mysqli_connect($host, $user, $pwd, $sql_db);
                 $conditions[] = "LastName LIKE '%$lastName%'";
             }
 
+            // Add WHERE clause if any conditions are set
             if (!empty($conditions)) {
                 $searchQuery .= " WHERE " . implode(" AND ", $conditions);
             }
 
+            // Run the search query
             $result = mysqli_query($conn, $searchQuery);
 
-            // Show results
+            // Display results in a table if any rows are found
             if ($result && mysqli_num_rows($result) > 0) {
                 echo "<table>
                     <thead>
@@ -74,10 +80,12 @@ $conn = @mysqli_connect($host, $user, $pwd, $sql_db);
                         <td>{$row['FirstName']} {$row['LastName']}</td>
                         <td>{$row['Status']}</td>
                         <td>
+                            <!-- Form to delete EOIs by job reference -->
                             <form method='post' action='manage.php' style='display:inline;'>
                                 <input type='hidden' name='deleteRef' value='{$row['JobReferenceNumber']}'>
                                 <input type='submit' value='Delete All for Job'>
                             </form>
+                            <!-- Form to update the status of a specific EOI -->
                             <form method='post' action='manage.php' style='display:inline;'>
                                 <input type='hidden' name='eoiID' value='{$row['EOInumber']}'>
                                 <select name='newStatus'>
@@ -93,10 +101,10 @@ $conn = @mysqli_connect($host, $user, $pwd, $sql_db);
 
                 echo "</tbody></table>";
             } else {
-                echo "<p>No matching EOIs found.</p>";
+                echo "<p>No matching EOIs found.</p>"; // Message if no EOIs match the search
             }
 
-            // Handle Deletion
+            // Handle POST request to delete EOIs by job reference
             if (!empty($_POST['deleteRef'])) {
                 $delRef = mysqli_real_escape_string($conn, $_POST['deleteRef']);
                 $delSQL = "DELETE FROM eoi WHERE JobReferenceNumber = '$delRef'";
@@ -107,7 +115,7 @@ $conn = @mysqli_connect($host, $user, $pwd, $sql_db);
                 }
             }
 
-            // Handle Status Update
+            // Handle POST request to update EOI status
             if (!empty($_POST['updateStatus']) && !empty($_POST['eoiID']) && !empty($_POST['newStatus'])) {
                 $eoiID = mysqli_real_escape_string($conn, $_POST['eoiID']);
                 $newStatus = mysqli_real_escape_string($conn, $_POST['newStatus']);
@@ -119,11 +127,12 @@ $conn = @mysqli_connect($host, $user, $pwd, $sql_db);
                 }
             }
 
+            // Close DB connection
             mysqli_close($conn);
         }
         ?>
     </main>
 
-    <?php include("footer.inc"); ?>
+    <?php include("footer.inc"); ?> 
 </body>
 </html>
