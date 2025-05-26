@@ -1,4 +1,8 @@
+
+
+
 <?php
+
 // Only run if form is submitted via POST
 if ($_SERVER["REQUEST_METHOD"] != "POST") {
     header("Location: apply.php");
@@ -7,7 +11,7 @@ if ($_SERVER["REQUEST_METHOD"] != "POST") {
 
 require_once("settings.php");  // DB credentials
 
-$conn = mysqli_connect($host, $user, $pwd, $sql_db);
+
 
 if (!$conn) {
     die("Connection failed: " . mysqli_connect_error());
