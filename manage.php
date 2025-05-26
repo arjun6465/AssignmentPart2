@@ -1,7 +1,12 @@
 <?php
-// Load database connection details
-require_once('settings.php');
-$conn = @mysqli_connect($host, $user, $pwd, $sql_db); // Connect to the MySQL database
+session_start();
+if (!isset($_SESSION["username"])) {
+    header("Location: login.php");
+    exit();
+}
+require_once("settings.php");
+$conn = @mysqli_connect($host, $user, $pwd, $sql_db);
+
 ?>
 
 <!DOCTYPE html>
@@ -18,7 +23,7 @@ $conn = @mysqli_connect($host, $user, $pwd, $sql_db); // Connect to the MySQL da
     <main>
         <h2>Manage Expressions of Interest</h2>
 
-        <!-- Form to search EOIs by job ref or applicant name -->
+       
         <form method="get" action="manage.php">
             <fieldset>
                 <legend>Search EOIs</legend>
@@ -43,17 +48,17 @@ $conn = @mysqli_connect($host, $user, $pwd, $sql_db); // Connect to the MySQL da
             // If filters are provided, add conditions to the query
             if (!empty($_GET['jobRef'])) {
                 $jobRef = mysqli_real_escape_string($conn, $_GET['jobRef']);
-                $conditions[] = "JobReferenceNumber = '$jobRef'";
+                $conditions[] = "job_ref = '$jobRef'";
             }
 
             if (!empty($_GET['firstName'])) {
                 $firstName = mysqli_real_escape_string($conn, $_GET['firstName']);
-                $conditions[] = "FirstName LIKE '%$firstName%'";
+                $conditions[] = "first_name LIKE '%$firstName%'";
             }
 
             if (!empty($_GET['lastName'])) {
                 $lastName = mysqli_real_escape_string($conn, $_GET['lastName']);
-                $conditions[] = "LastName LIKE '%$lastName%'";
+                $conditions[] = "last_name LIKE '%$lastName%'";
             }
 
             // Add WHERE clause if any conditions are set
@@ -76,13 +81,13 @@ $conn = @mysqli_connect($host, $user, $pwd, $sql_db); // Connect to the MySQL da
                 while ($row = mysqli_fetch_assoc($result)) {
                     echo "<tr>
                         <td>{$row['EOInumber']}</td>
-                        <td>{$row['JobReferenceNumber']}</td>
-                        <td>{$row['FirstName']} {$row['LastName']}</td>
-                        <td>{$row['Status']}</td>
+                        <td>{$row['job_ref']}</td>
+                       <td>{$row['first_name']} {$row['last_name']}</td>
+                        <td>{$row['status']}</td>
                         <td>
                             <!-- Form to delete EOIs by job reference -->
                             <form method='post' action='manage.php' style='display:inline;'>
-                                <input type='hidden' name='deleteRef' value='{$row['JobReferenceNumber']}'>
+                            <input type='hidden' name='deleteRef' value='{$row['job_ref']}'>
                                 <input type='submit' value='Delete All for Job'>
                             </form>
                             <!-- Form to update the status of a specific EOI -->
@@ -107,7 +112,7 @@ $conn = @mysqli_connect($host, $user, $pwd, $sql_db); // Connect to the MySQL da
             // Handle POST request to delete EOIs by job reference
             if (!empty($_POST['deleteRef'])) {
                 $delRef = mysqli_real_escape_string($conn, $_POST['deleteRef']);
-                $delSQL = "DELETE FROM eoi WHERE JobReferenceNumber = '$delRef'";
+                $delSQL = "DELETE FROM eoi WHERE job_ref = '$delRef'";
                 if (mysqli_query($conn, $delSQL)) {
                     echo "<p>All EOIs for job ref <strong>$delRef</strong> deleted.</p>";
                 } else {
