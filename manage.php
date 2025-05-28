@@ -29,7 +29,6 @@ $conn = @mysqli_connect($host, $user, $pwd, $sql_db);
                 <legend>Search EOIs</legend>
                 <label>Job Ref: <input type="text" name="jobRef"></label>
                 <label>First Name: <input type="text" name="firstName"></label>
-                <label>Last Name: <input type="text" name="lastName"></label>
                 <input type="submit" value="Search">
             </fieldset>
         </form>
@@ -56,10 +55,6 @@ $conn = @mysqli_connect($host, $user, $pwd, $sql_db);
                 $conditions[] = "first_name LIKE '%$firstName%'";
             }
 
-            if (!empty($_GET['lastName'])) {
-                $lastName = mysqli_real_escape_string($conn, $_GET['lastName']);
-                $conditions[] = "last_name LIKE '%$lastName%'";
-            }
 
             // Add WHERE clause if any conditions are set
             if (!empty($conditions)) {
@@ -82,7 +77,7 @@ $conn = @mysqli_connect($host, $user, $pwd, $sql_db);
                     echo "<tr>
                         <td>{$row['EOInumber']}</td>
                         <td>{$row['job_ref']}</td>
-                       <td>{$row['first_name']} {$row['last_name']}</td>
+                       <td>{$row['first_name']}</td>
                         <td>{$row['status']}</td>
                         <td>
                             <!-- Form to delete EOIs by job reference -->

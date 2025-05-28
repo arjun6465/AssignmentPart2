@@ -40,15 +40,22 @@ $conn->close();
 ?>
 
 <!DOCTYPE html>
-<html>
-<head><title>Login</title></head>
-<body>
-<h2>Login</h2>
-<?php if ($error) echo "<p style='color:red;'>$error</p>"; ?>
-<form method="post" action="">
-    <label>Username: <input type="text" name="username" required></label><br>
-    <label>Password: <input type="password" name="password" required></label><br>
-    <button type="submit">Login</button>
-</form>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Login</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+
+<body class="login-page">
+    <div class="login-container">
+        <h2>Admin Login</h2>
+        <?php if ($error) echo "<p style='color:red;'>$error</p>"; ?>
+        <form method="post" action="">
+            <label>Username: <input type="text" name="username" required></label><br>
+            <label>Password: <input type="password" name="password" required></label><br>
+            <button type="submit">Login</button>
+        </form>
+    </div>
 </body>
 </html>

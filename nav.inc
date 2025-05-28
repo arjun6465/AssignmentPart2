@@ -9,5 +9,8 @@
 <?php if (isset($_SESSION['username'])): ?>
     <li><a href="logout.php">Logout</a></li>
 <?php endif; ?>
+
   </ul>
 </nav>
+
+
