@@ -20,6 +20,7 @@ $conn = @mysqli_connect($host, $user, $pwd, $sql_db);
     <?php include("nav.inc"); ?>    
 
     <main>
+
         <h2>Manage Expressions of Interest</h2>
 
         <form method="get" action="manage.php">
@@ -57,6 +58,21 @@ $conn = @mysqli_connect($host, $user, $pwd, $sql_db);
             </fieldset>
         </form>
 
+
+         <hr>
+<h2>Register New Manager</h2>
+<form method="post" action="manage.php" class="left-aligned-form">
+
+  <label>Username:<br>
+    <input type="text" name="new_username" required style="width: 25%; padding: 8px;">
+  </label><br><br>
+
+  <label>Password:<br>
+    <input type="password" name="new_password" required style="width: 25%; padding: 8px;">
+  </label><br><br>
+
+  <input type="submit" name="register_manager" value="Register" class="apply-button">
+</form>
         <hr>
 
         <?php
@@ -180,6 +196,32 @@ $conn = @mysqli_connect($host, $user, $pwd, $sql_db);
                     echo "<p>Error deleting job: " . mysqli_error($conn) . "</p>";
                 }
             }
+
+
+            if (isset($_POST['register_manager'])) {
+    $new_username = trim($_POST['new_username']);
+    $new_password = $_POST['new_password'];
+
+    if (!preg_match("/^[a-zA-Z0-9_]{5,20}$/", $new_username)) {
+        echo "<p style='color: red; text-align: center;'>Username must be 5–20 letters/numbers.</p>";
+    } elseif (!preg_match("/^(?=.*[A-Z])(?=.*[a-z])(?=.*\d).{8,}$/", $new_password)) {
+        echo "<p style='color: red; text-align: center;'>Password must be 8+ characters with upper/lowercase and a number.</p>";
+    } else {
+        $hashed = password_hash($new_password, PASSWORD_DEFAULT);
+        $check = mysqli_query($conn, "SELECT * FROM user WHERE username = '$new_username'");
+        
+        if (mysqli_num_rows($check) > 0) {
+            echo "<p style='color: red; text-align: center;'>Username already exists.</p>";
+        } else {
+            $insert = mysqli_query($conn, "INSERT INTO user (username, password) VALUES ('$new_username', '$hashed')");
+            if ($insert) {
+                echo "<p style='color: green; text-align: center;'>New manager registered successfully.</p>";
+            } else {
+                echo "<p style='color: red; text-align: center;'>Error: " . mysqli_error($conn) . "</p>";
+            }
+        }
+    }
+}
 
             mysqli_close($conn);
         }

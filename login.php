@@ -44,7 +44,8 @@ $conn->close();
 <head>
     <meta charset="UTF-8">
     <title>Login</title>
-    <link rel="stylesheet" href="css/styles.css">
+ <link rel="stylesheet" href="/AssignmentPart2/css/styles.css">
+
 </head>
 
 <body class="login-page">

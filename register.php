@@ -48,6 +48,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
   <?php include("nav.inc"); ?>
 
   <main class="job-page">
+    
     <h1>Register New Manager</h1>
     <form method="post" action="register.php" novalidate="novalidate" style="max-width: 500px; margin: auto;">
       <label>Username:<br>
