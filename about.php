@@ -41,13 +41,13 @@
         <ul>
           <li> Student ID - 105337088</li>
         </ul>
-        <li><strong>Member 2:</strong> Nashwan Name</li>
+        <li><strong>Member 2:</strong> Nashwan Shiraz</li>
         <ul>
           <li> Student ID - 104514657</li>
         </ul>
-        <li><strong>Member 3:</strong> Arjun Name</li>
+        <li><strong>Member 3:</strong> Arjun Sivaraj</li>
         <ul>
-          <li> Student ID - 00000000</li>
+          <li> Student ID - 105882355</li>
         </ul>
       </ol>
     </section>
