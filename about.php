@@ -87,34 +87,34 @@
       <tr>
         <td> </td>
         <td>Learning</td>
-        <td>Im passionate about learning about a wide variety of things so I can be well informed about many things.</td>
+        <td>I'm passionate about learning about a wide variety of things so I can be well informed about many things.</td>
       </tr>
       <tr>
         <td> Arjun</td>
-        <td>--Fill in here--</td>
-        <td>--Fill in here--</td>
+        <td>Music</td>
+        <td>I like hardstyle and techno music.</td>
         
       </tr>
       <tr>
         <td></td>
-        <td>--Fill in here--</td>
-        <td>--Fill in here--</td>
+        <td>Cars</td>
+        <td>I like cars and I drive an 03 WRX STI</td>
       </tr>
       <tr>
         <td> </td>
-        <td>--Fill in here--</td>
-        <td>--Fill in here--</td>
+        <td>Video Games</td>
+        <td>I like playing video games, at the moment I am playing a lot of counter strike.</td>
       </tr>
       <tr>
         <td> Nashwan</td>
         <td>Cars</td>
-        <td>Simmilar to artin but not as crazy about speeding but rather, the mechanisms and how it works and just the beauty of it internallay and externally </td>
+        <td>Similar to artin but not as crazy about speeding but rather, the mechanisms and how it works and just the beauty of it internally and externally.</td>
         
       </tr>
       <tr>
         <td></td>
         <td>Cooking </td>
-        <td>Having hardship gaining weight, i dabble in abit of cooking and love the food and learning process of making declicious meals </td>
+        <td>Having hardship gaining weight, I dabble in a bit of cooking and love the food and learning process of making delicious meals.</td>
       </tr>
       <tr>
         <td> </td>
