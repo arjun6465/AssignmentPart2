@@ -6,6 +6,8 @@
   - Reduces header font size for better mobile readability
 */
 
+
+
 @media only screen and (max-width: 768px) {
     .container {
         width: 100%;
@@ -20,7 +22,7 @@
 
     /*Giving the body section of each page a nice background colour. this applies to all the pages
     */
-    body {
+    body:not(.login-page) {
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
       background-color: #fff;
       color: #000;
@@ -300,4 +302,105 @@ thead {
     border: 1px solid #aaa;
     background-color: #f8f8f8;
     border-radius: 8px;
+}
+
+.login-page {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #0195ff;
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Login form container matches site card/box styling */
+.login-page form {
+    background-color: #ffffff;
+    border: 1px solid #dfe6e9;
+    border-radius: 10px;
+    padding: 30px 25px;
+    width: 320px;
+    box-shadow: 0 0 15px rgba(0,0,0,0.1);
+}
+
+/* Headings match site colors */
+.login-page h2 {
+    text-align: center;
+    color: #113a55;
+    font-weight: bold;
+    margin-bottom: 20px;
+    font-size: 28px;
+    border-bottom: 2px solid #3498db;
+    padding-bottom: 10px;
+}
+
+/* Consistent label spacing and color */
+.login-page label {
+    display: block;
+    margin-bottom: 10px;
+    color: #2c3e50;
+    font-weight: 500;
+}
+
+/* Input fields match site forms */
+.login-page input[type="text"],
+.login-page input[type="password"] {
+    width: 90%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    margin-bottom: 20px;
+    font-size: 14px;
+}
+
+/* Login button styled like site buttons */
+.login-page button {
+    width: 100%;
+    padding: 12px;
+    background-color: #3498db;
+    color: #fff;
+    border: none;
+    border-radius: 6px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.login-page button:hover {
+    background-color: #2980b9;
+}
+
+/* Error messages consistent with site alerts */
+.login-page p[style*="color:red"] {
+    background-color: #ffdddd;
+    border-left: 6px solid #d8000c;
+    color: #a70000;
+    padding: 10px;
+    margin-bottom: 20px;
+    border-radius: 5px;
+    text-align: center;
+}
+
+.login-container {
+  background-color: #e0e0e0;
+  padding: 20px 30px 30px;
+  border-radius: 12px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+  width: 380px;
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  gap: 20px; /* keeps spacing clean and uniform */
+}
+
+.login-container h2 {
+  margin: 0;
+  padding-bottom: 10px;
+  border-bottom: 2px solid #3498db;
+  font-size: 26px;
+  text-align: center;
+  color: #2c3e50;
 }
