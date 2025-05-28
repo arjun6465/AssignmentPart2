@@ -6,8 +6,5 @@
     <li><a href="apply.php">Apply</a></li>
     <li><a href="about.php">About Us</a></li>
     <li><a href="manage.php">Admin</a></li>
-    <li><a href="register.php">Register</a></li>
-
-
   </ul>
 </nav>
