@@ -404,3 +404,38 @@ thead {
   text-align: center;
   color: #2c3e50;
 }
+
+/* === Enhancements Page Styling === */
+.enhancements-page {
+  font-family: 'Segoe UI', sans-serif;
+  background-color: #f9fbfc;
+  color: #333;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.enhancements-page h1 {
+  font: small-caps bold 36px 'Segoe UI', sans-serif;
+  text-align: center;
+  color: #113a55;
+  margin-bottom: 40px;
+  border-bottom: 3px solid #3498db;
+  padding-bottom: 10px;
+}
+
+.enhancements-page section {
+  background-color: #ffffff;
+  border: 1px solid #dfe6e9;
+  border-radius: 10px;
+  padding: 20px;
+  margin-bottom: 30px;
+}
+
+.enhancements-page h2 {
+  font-size: 24px;
+  color: #113a55;
+  margin-bottom: 10px;
+  border-left: 6px solid #2980b9;
+  padding-left: 12px;
+}
