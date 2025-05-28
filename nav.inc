@@ -13,6 +13,7 @@ if (session_status() === PHP_SESSION_NONE) {
     <li><a href="apply.php">Apply</a></li>
     <li><a href="about.php">About Us</a></li>
 
+
     <?php if (isset($_SESSION['username'])): ?>
       <li><a href="manage.php">Admin</a></li>
       <li><a href="logout.php">Logout</a></li>
