@@ -3,13 +3,13 @@
 
 <?php
 
-// Only run if form is submitted via POST
+
 if ($_SERVER["REQUEST_METHOD"] != "POST") {
     header("Location: apply.php");
     exit();
 }
 
-require_once("settings.php");  // DB credentials
+require_once("settings.php");  
 
 
 
@@ -17,12 +17,12 @@ if (!$conn) {
     die("Connection failed: " . mysqli_connect_error());
 }
 
-// Sanitize function
+
 function sanitize($data) {
     return htmlspecialchars(stripslashes(trim($data)));
 }
 
-// Retrieve and sanitize
+
 $job_ref = sanitize($_POST["job-ref"] ?? "");
 $first = sanitize($_POST["name"] ?? "");
 $dob = sanitize($_POST["DoB"] ?? "");
@@ -36,7 +36,6 @@ $phone = sanitize($_POST["phone"] ?? "");
 $skills = $_POST["skills"] ?? [];
 $otherskills = sanitize($_POST["other-skills"] ?? "");
 
-// Server-side validation
 $errors = [];
 if (!preg_match("/^[a-zA-Z ]{1,20}$/", $first)) $errors[] = "Invalid name.";
 if (!preg_match("/^\d{2}\/\d{2}\/\d{4}$/", $dob)) $errors[] = "Invalid DOB.";
@@ -55,7 +54,10 @@ if (count($errors) > 0) {
     exit();
 }
 
-// Create table if not exists
+// Creates a table if there isnt one that already exists, EOInumber INT AUTO_INCREMENT PRIMARY KEY basically assigns every entry a 
+// unique number, job_ref VARCHAR(10) NOT NULL is the job reference number, first_name VARCHAR(20) NOT NULL is the first name of the applicant
+// last_name VARCHAR(20) NOT NULL is the last name of the applicant, street VARCHAR(40) NOT NULL is the street address of the applicant,
+// VARCHAR(numbers) allows the amount of chaarcters are allowed in the field.
 $create_table_sql = <<<SQL
 CREATE TABLE IF NOT EXISTS eoi (
     EOInumber INT AUTO_INCREMENT PRIMARY KEY,
@@ -79,16 +81,20 @@ SQL;
 
 mysqli_query($conn, $create_table_sql);
 
-// Assign up to 4 skills
+// Assign up to 4 skills to variables that will be inserted into the database
+// The skills are passed as an array from the form, so we need to check if they exist
 $skill1 = $skills[0] ?? null;
 $skill2 = $skills[1] ?? null;
 $skill3 = $skills[2] ?? null;
 $skill4 = $skills[3] ?? null;
 
-// Insert application
+// The first argument "sssssssssssss" tells PHP the types of the values:
+//s = string (we're passing 13 strings)
 $stmt = $conn->prepare("INSERT INTO eoi (job_ref, first_name, last_name, street, suburb, state, postcode, email, phone, skill1, skill2, skill3, skill4, otherskills, status) VALUES (?, ?, '', ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, 'New')");
 $stmt->bind_param("sssssssssssss", $job_ref, $first, $street, $suburb, $state, $postcode, $email, $phone, $skill1, $skill2, $skill3, $skill4, $otherskills);
 
+
+//executes the prepared statement if everything is correct, if its not it will return an error
 if ($stmt->execute()) {
     $eoi_id = $stmt->insert_id;
     echo "<h2>Application Successful!</h2><p>Your EOI number is <strong>$eoi_id</strong>.</p><a href='index.php'>Return Home</a>";
