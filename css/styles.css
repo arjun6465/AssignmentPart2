@@ -59,15 +59,6 @@ nav a:hover::after {
       }
       
 
-     
-      
-      
-      
-
-/* */
-
-
-
 
 /* */
       .job-page {
@@ -219,7 +210,7 @@ nav a:hover::after {
       /* giving the email in the footer an ID so we could change the colour to white*/
       #email{
         text-decoration: none;
-        color:white;
+        color:rgb(12, 7, 7);
       }
 
       /*Johnny is the ID  for email link in about.html in the footer  Nash : im not sure what this is yet */

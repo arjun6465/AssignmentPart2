@@ -55,9 +55,9 @@
     <section>
       <h2>Role Breakdown</h2>
       <ul>
-        <li>Artin - Role (e.g., HTML Layout and Structure)</li>
-        <li>Arjun - Role (e.g., Job Description Content)</li>
-        <li>Nashwan - Role (e.g., Form Design and Validation)</li>
+        <li>Artin - Part 1, 2, 4, 6, 7, 8 (Creating a unique username and password rule. Added a function that allowed the admin to add, edit and delete jobs to and from the job description page. Control access to php with username and pawssword.)</li>
+        <li>Arjun - Part 1, 2, 3, 6, 8 (Create a manager registration page with server side validation requiring unique username and a password rule, and store this information in a table.)</li>
+        <li>Nashwan - Part 5, 6, 7, 8 (Provide the manager with the ability to search)</li>
       </ul>
     </section>
   </main>
